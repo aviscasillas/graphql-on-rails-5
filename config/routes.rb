@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   # mount ActionCable.server => '/cable'
 
   get '/status', to: 'statuses#index'
+  resource :queries, only: [:create]
 end

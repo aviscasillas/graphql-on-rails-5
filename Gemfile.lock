@@ -46,6 +46,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.0.0)
+    blankslate (3.1.3)
     builder (3.2.2)
     byebug (8.2.1)
     celluloid (0.17.3)
@@ -84,6 +85,8 @@ GEM
       websocket-driver (>= 0.5.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    graphql (0.10.9)
+      parslet (~> 1.6)
     hiredis (0.5.2)
     hitimes (1.2.3)
     i18n (0.7.0)
@@ -98,6 +101,8 @@ GEM
     minitest (5.8.4)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    parslet (1.7.1)
+      blankslate (>= 2.0, <= 4.0)
     puma (2.15.3)
     rack (2.0.0.alpha)
       json
@@ -155,6 +160,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  graphql
   puma
   rails (>= 5.0.0.beta1.1, < 5.1)
   spring
