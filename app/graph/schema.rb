@@ -9,8 +9,7 @@ ConfigType = GraphQL::ObjectType.define do
   field :company, !types.String
 end
 
-# ...and a query root
-QueryType = GraphQL::ObjectType.define do
+QueryRoot = GraphQL::ObjectType.define do
   name 'Query'
   description 'The query root of this schema'
 
@@ -21,5 +20,19 @@ QueryType = GraphQL::ObjectType.define do
   end
 end
 
+MutationRoot = GraphQL::ObjectType.define do
+  name 'Mutation'
+  description 'The mutation root of this schema'
+
+  field :config do
+    type ConfigType
+    argument :id, !types.ID
+    argument :app_name, types.String
+    resolve(lambda do |obj, args, ctx|
+      Config.find(args['id']).tap { |c| c.update(args.to_h) }
+    end)
+  end
+end
+
 # Then create your schema
-Schema = GraphQL::Schema.new(query: QueryType)
+Schema = GraphQL::Schema.new(query: QueryRoot, mutation: MutationRoot)
